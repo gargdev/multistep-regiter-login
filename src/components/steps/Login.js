@@ -17,12 +17,19 @@ export default function Login({ onClose, onGotoRegister }) {
       const result = await response.json();
       if (!response.ok) throw new Error(result.message);
       alert('Login Successful');
+      const {token, user} = result;
+      onLoginSuccess(token, user.role, user.purpose);
       onClose();
     } catch (err) {
       alert(err.message);
     }
   };
 
+  const onLoginSuccess = (token, role, purpose) => {
+    localStorage.setItem('authToken', token);  // Store the token
+    localStorage.setItem('role', role);        // Store the role
+    localStorage.setItem('purpose', purpose); 
+  };
   return (
     <>
       {/* <!-- login container --> */}
