@@ -7,12 +7,16 @@ import Experience from './steps/Experience';
 import Completion from './steps/Completion';
 import Login from './steps/Login';
 
-export default function RegistrationModal({ onClose }) {
-  const [step, setStep] = useState(1); // Step state for registration flow
+export default function RegistrationModal({ onClose,  initialStep = 1 }) {
+  const [step, setStep] = useState(initialStep); // Step state for registration flow
   const [formData, setFormData] = useState({}); // Form data to pass between steps
   const [isVisible, setIsVisible] = useState(false); // Control visibility for transitions
   const API_URL = 'http://localhost:5000/api/auth';
 
+  useEffect(() => {
+    setStep(initialStep); // Update step when initialStep changes
+  }, [initialStep]);
+  
   useEffect(() => {
     setIsVisible(true); // Trigger open transition
   }, []);
