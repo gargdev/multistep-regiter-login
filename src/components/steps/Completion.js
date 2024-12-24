@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Completion({ data }) {
+export default function Completion({ data, onPrev }) {
   return (
     <div className="space-y-6 py-4">
       <div className="space-y-2 text-center">

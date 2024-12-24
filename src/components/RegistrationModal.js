@@ -36,7 +36,7 @@ export default function RegistrationModal({ onClose }) {
     } else if (step === 4) {
       // Submit final data for "Organize" purpose
       await handleSubmit({ ...formData, ...data });
-      setStep('login');
+      setStep(5);
     } else {
       setStep((prev) => prev + 1);
     }
@@ -94,7 +94,7 @@ export default function RegistrationModal({ onClose }) {
             {step === 2 && <Purpose onNext={handleNext} />}
             {step === 3 && <Role onNext={handleNext} onPrev={previousStep} />}
             {step === 4 && <Experience onNext={handleNext} onPrev={previousStep} />}
-            {step === 5 && <Completion data={formData} />}
+            {step === 5 && <Completion data={formData} onPrev={previousStep} />}
             {step === 'login' && <Login onClose={closeModal} onGotoRegister={handleGoToRegister} />}
 
             <div className="mt-4">
