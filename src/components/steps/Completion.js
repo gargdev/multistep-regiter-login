@@ -14,7 +14,7 @@ export default function Completion({ data, onPrev }) {
           <li>Publish and look for events in your area.</li>
         </ol>
       </div>
-      <div className="flex gap-4">
+      <div className="flex flex-col sm:flex-row gap-4">
         <button className="flex-1 rounded-md bg-orange-500 px-4 py-2 text-white hover:bg-orange-600">
           Complete your portfolio
         </button>

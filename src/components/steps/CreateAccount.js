@@ -25,7 +25,7 @@ export default function CreateAccount({ onNext, onGoToLogin }) {
           </p>
           </div>
 
-          <div className="flex flex-row gap-2">
+          <div className="flex flex-col md:flex-row gap-2">
             <button className="flex px-3 py-2 gap-2 text-center text-sm font-medium w-full items-center justify-center rounded-xl border border-gray-300 hover:bg-gray-50">
               <svg className="h-4 w-4" viewBox="0 0 24 24">
                 <path
