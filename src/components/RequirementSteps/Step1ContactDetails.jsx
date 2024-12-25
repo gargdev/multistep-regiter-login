@@ -8,7 +8,7 @@ const Step1ContactDetails = ({ formData, onNext }) => {
   };
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-6">
       <h3 className="text-xl font-semibold text-gray-900">Contact Details</h3>
       <div className="space-y-2">
         <input
