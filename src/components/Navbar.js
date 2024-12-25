@@ -2,21 +2,25 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import RegistrationModal from "./RegistrationModal";
 import { FaBars, FaTimes } from "react-icons/fa";
+import MultistepFormModal from "./MultistepFormModal";
 
 function Navbar() {
   const navigate = useNavigate();
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isRegistrationModalOpen, setIsRegistrationModalOpen] = useState(false);
+  const [isMultistepFormModalOpen, setIsMultistepFormModalOpen] = useState(false);
   const [modalStep, setModalStep] = useState(1); // Default to the first step
   const [isDrawerOpen, setIsDrawerOpen] = useState(false); // Drawer state
 
-  // Open and close modal functions
-  const openModal = (step) => {
-    setModalStep(step); // Set the step based on the button clicked
-    setIsModalOpen(true);
-  };
-  const closeModal = () => setIsModalOpen(false);
+// Open and close modal functions
+const openRegistrationModal = (step) => {
+  setModalStep(step); // Set the step for the registration modal
+  setIsRegistrationModalOpen(true);
+};
+const closeRegistrationModal = () => setIsRegistrationModalOpen(false);
 
+const openMultistepFormModal = () => setIsMultistepFormModalOpen(true);
+const closeMultistepFormModal = () => setIsMultistepFormModalOpen(false);
   const toggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen);
   };
@@ -46,9 +50,11 @@ function Navbar() {
         <Link to="/" className="hover:text-orange-500">
           Home
         </Link>
-        <Link to="/plan" className="hover:text-orange-500">
+        <button 
+          onClick={openMultistepFormModal}
+          className="hover:text-orange-500">
           Plan your event
-        </Link>
+        </button>
         <Link to="/help" className="hover:text-orange-500">
           Help center
         </Link>
@@ -101,27 +107,15 @@ function Navbar() {
               />
             </svg>
           </Link>
-          <Link
-            to="/plan"
-            onClick={toggleDrawer}
+          <button
+            onClick={() => {
+              openMultistepFormModal();
+              toggleDrawer();
+            }}
             className="flex justify-between items-center border-b-2 w-full hover:text-orange-500"
           >
             Plan your event
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="size-5"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="m8.25 4.5 7.5 7.5-7.5 7.5"
-              />
-            </svg>
-          </Link>
+          </button>
           <Link
             to="/help"
             onClick={toggleDrawer}
@@ -157,7 +151,7 @@ function Navbar() {
             <>
               <button
                 onClick={() => {
-                  openModal("login");
+                  openRegistrationModal("login");
                   toggleDrawer();
                 }}
                 className="px-6 w-full py-2 text-orange-500 border border-orange-500 rounded-full hover:bg-orange-500 hover:text-white transition-colors"
@@ -166,7 +160,7 @@ function Navbar() {
               </button>
               <button
                 onClick={() => {
-                  openModal(1);
+                  openRegistrationModal(1);
                   toggleDrawer();
                 }}
                 className="px-6 py-2 w-full text-orange-500 border border-orange-500 rounded-full hover:bg-orange-500 hover:text-white transition-colors"
@@ -190,13 +184,13 @@ function Navbar() {
         ) : (
           <>
             <button
-              onClick={() => openModal("login")}
+              onClick={() => openRegistrationModal("login")}
               className="px-6 py-2 text-orange-500 border border-orange-500 rounded-full hover:bg-orange-500 hover:text-white transition-colors"
             >
               Login
             </button>
             <button
-              onClick={() => openModal(1)}
+              onClick={() => openRegistrationModal(1)}
               className="px-6 py-2 text-orange-500 border border-orange-500 rounded-full hover:bg-orange-500 hover:text-white transition-colors"
             >
               Register
@@ -205,8 +199,15 @@ function Navbar() {
         )}
       </div>
 
-      {isModalOpen && (
-        <RegistrationModal onClose={closeModal} initialStep={modalStep} />
+      {/* Modals */}
+      {isRegistrationModalOpen && (
+        <RegistrationModal onClose={closeRegistrationModal} initialStep={modalStep} />
+      )}
+      {isMultistepFormModalOpen && (
+        <MultistepFormModal
+          isOpen={isMultistepFormModalOpen}
+          onClose={closeMultistepFormModal}
+        />
       )}
     </nav>
   );
