@@ -1,10 +1,12 @@
-import React from 'react';
+import React from "react";
 
 export default function Completion({ data, onPrev }) {
   return (
     <div className="space-y-6 py-4">
       <div className="space-y-2 text-center">
-        <h2 className="text-2xl font-bold">Great! You're Almost there. Here's what's next:</h2>
+        <h2 className="text-2xl font-bold">
+          Great! You're Almost there. Here's what's next:
+        </h2>
         <pre>{JSON.stringify(data, null, 2)}</pre>
       </div>
       <div className="space-y-4">
@@ -23,9 +25,7 @@ export default function Completion({ data, onPrev }) {
         </button>
       </div>
       <div className="flex justify-end">
-        <button className="text-orange-500 hover:underline">
-          Dashboard →
-        </button>
+        <button className="text-orange-500 hover:underline">Dashboard →</button>
       </div>
     </div>
   );

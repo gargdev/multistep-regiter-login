@@ -1,8 +1,8 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import regimg from "../../assets/edwin-andrade-4V1dC_eoCwg-unsplash 1.png";
 
 export default function CreateAccount({ onNext, onGoToLogin }) {
-  const [data, setData] = useState({ fullName: '', email: '', password: '' });
+  const [data, setData] = useState({ fullName: "", email: "", password: "" });
 
   const handleChange = (e) => {
     setData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -21,8 +21,8 @@ export default function CreateAccount({ onNext, onGoToLogin }) {
           <div className="text-left">
             <h2 className="text-2xl font-medium text-gray-600">Sign Up</h2>
             <p class="text-xs text-orange-500 mb-3">
-            If you are not already a member, easily SignUp
-          </p>
+              If you are not already a member, easily SignUp
+            </p>
           </div>
 
           <div className="flex flex-col md:flex-row gap-2">
@@ -75,8 +75,9 @@ export default function CreateAccount({ onNext, onGoToLogin }) {
               </label> */}
               <input
                 id="fullName"
-                type="text" name="fullName"
-                placeholder="Full Name" 
+                type="text"
+                name="fullName"
+                placeholder="Full Name"
                 onChange={handleChange}
                 required
                 className="w-full rounded-xl border border-gray-300 px-3 py-2 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500"
@@ -91,9 +92,9 @@ export default function CreateAccount({ onNext, onGoToLogin }) {
               </label> */}
               <input
                 id="email"
-                type="email" 
-                name="email" 
-                placeholder="Email or phone number" 
+                type="email"
+                name="email"
+                placeholder="Email or phone number"
                 onChange={handleChange}
                 required
                 className="w-full rounded-xl border border-gray-300 px-3 py-2 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500"
@@ -108,9 +109,9 @@ export default function CreateAccount({ onNext, onGoToLogin }) {
               </label> */}
               <input
                 id="password"
-                type="password" 
-                name="password" 
-                placeholder="Password" 
+                type="password"
+                name="password"
+                placeholder="Password"
                 onChange={handleChange}
                 required
                 className="w-full rounded-xl border border-gray-300 px-3 py-2 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500"
@@ -140,11 +141,7 @@ export default function CreateAccount({ onNext, onGoToLogin }) {
 
         {/* <!-- image --> */}
         <div className="md:block hidden w-1/2">
-          <img
-            className="rounded-2xl"
-            alt="register"
-            src={regimg}
-          />
+          <img className="rounded-2xl" alt="register" src={regimg} />
         </div>
       </div>
     </>

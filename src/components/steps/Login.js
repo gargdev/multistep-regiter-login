@@ -1,5 +1,6 @@
 import React from "react";
 import logimg from "../../assets/edwin-andrade-4V1dC_eoCwg-unsplash 1.png";
+import { loginUser } from "../../api/axios";
 export default function Login({ onClose, onGotoRegister }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -9,27 +10,21 @@ export default function Login({ onClose, onGotoRegister }) {
     };
 
     try {
-      const response = await fetch('http://localhost:5000/api/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
-      const result = await response.json();
-      if (!response.ok) throw new Error(result.message);
-      alert('Login Successful');
-      const {token, user} = result;
+      const result = await loginUser(formData);
+      alert("Login Successful");
+      const { token, user } = result;
       onLoginSuccess(token, user.role, user.purpose);
       onClose();
     } catch (err) {
       alert(err.message);
     }
   };
-
   const onLoginSuccess = (token, role, purpose) => {
-    localStorage.setItem('authToken', token);  // Store the token
-    localStorage.setItem('role', role);        // Store the role
-    localStorage.setItem('purpose', purpose); 
+    localStorage.setItem("authToken", token); // Store the token
+    localStorage.setItem("role", role); // Store the role
+    localStorage.setItem("purpose", purpose);
   };
+
   return (
     <>
       {/* <!-- login container --> */}
@@ -115,9 +110,10 @@ export default function Login({ onClose, onGotoRegister }) {
 
           <div class="mt-3 text-xs flex justify-between items-center text-orange-500">
             <p className="">Don't have an account?</p>
-            <button 
-            onClick={onGotoRegister}
-            className="text-white font-md py-2 px-5 bg-orange-500 border border-orange-500 rounded-xl hover:scale-110 duration-300">
+            <button
+              onClick={onGotoRegister}
+              className="text-white font-md py-2 px-5 bg-orange-500 border border-orange-500 rounded-xl hover:scale-110 duration-300"
+            >
               Register
             </button>
           </div>

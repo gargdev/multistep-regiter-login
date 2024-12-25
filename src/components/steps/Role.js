@@ -1,7 +1,7 @@
 import React from "react";
-import volunteerimg from "../../assets/VOLNTR.png"
-import managerimg from "../../assets/MANGER.png"
-import agencyimg from "../../assets/AGENCY.png"
+import volunteerimg from "../../assets/VOLNTR.png";
+import managerimg from "../../assets/MANGER.png";
+import agencyimg from "../../assets/AGENCY.png";
 export default function Role({ onNext, onSkip, onPrev }) {
   const handleRoleSelection = (role) => {
     onNext({ role });
@@ -14,7 +14,7 @@ export default function Role({ onNext, onSkip, onPrev }) {
       </div>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
         {[
-          { id: "volunteer", title: "Volunteer", image: volunteerimg},
+          { id: "volunteer", title: "Volunteer", image: volunteerimg },
           { id: "event-manager", title: "Event Manager", image: managerimg },
           { id: "event-agency", title: "Event Agency", image: agencyimg },
         ].map((role) => (
@@ -24,11 +24,7 @@ export default function Role({ onNext, onSkip, onPrev }) {
             className="group rounded-lg border-2 border-orange-200 p-6 transition-all hover:border-orange-500"
           >
             <div className="flex flex-col text-left items-start gap-4 w-full">
-              <img
-                src={role.image}
-                alt={role.title}
-                className="h-24 w-24"
-              />
+              <img src={role.image} alt={role.title} className="h-24 w-24" />
               <h3 className="text-lg font-semibold">{role.title}</h3>
             </div>
           </button>

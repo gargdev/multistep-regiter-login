@@ -1,6 +1,6 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { X } from 'lucide-react';
+import React from "react";
+import { Link } from "react-router-dom";
+import { X } from "lucide-react";
 
 function MobileDrawer({
   isOpen,
@@ -13,13 +13,16 @@ function MobileDrawer({
   return (
     <div
       className={`fixed inset-0 z-50 transform ${
-        isOpen ? 'translate-x-0' : 'translate-x-full'
+        isOpen ? "translate-x-0" : "translate-x-full"
       } transition-transform duration-300 ease-in-out lg:hidden`}
     >
       <div className="fixed inset-0 bg-black bg-opacity-50" onClick={onClose} />
       <div className="fixed right-0 h-full w-64 bg-white shadow-xl">
         <div className="flex justify-end p-4">
-          <button onClick={onClose} className="text-gray-500 hover:text-gray-700">
+          <button
+            onClick={onClose}
+            className="text-gray-500 hover:text-gray-700"
+          >
             <X size={24} />
           </button>
         </div>
