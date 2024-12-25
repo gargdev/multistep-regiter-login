@@ -29,7 +29,5 @@ export const loginUser = async (formData) => {
     );
   }
 };
-// export const registerUser = (formData) => API.post('/users/register', formData);
-// export const loginUser = (formData) => API.post('/users/login', formData);
 
 export default API;
