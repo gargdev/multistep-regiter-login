@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { User, Mail, Phone, Building2 } from 'lucide-react';
 import Step1ContactDetails from "./Step1ContactDetails";
 import Step2EventDetails from "./Step2EventDetails";
 import Step3BudgetDescription from "./Step3BudgetDescription";
@@ -36,7 +35,7 @@ const MultistepFormModal = ({ onClose, initialStep = 1 }) => {
 
   const steps = [
     { title: "Contact Details", component: Step1ContactDetails },
-    { title: "Event Type", component: Step2EventDetails },
+    { title: "Event Details", component: Step2EventDetails },
     { title: "Budget", component: Step3BudgetDescription },
     { title: "Review", component: Step4ReviewSubmit },
   ];

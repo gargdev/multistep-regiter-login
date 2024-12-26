@@ -36,7 +36,10 @@ const Step4ReviewSubmit = ({ formData, onPrev, onSubmit }) => {
           <div>
             <dt className="text-sm text-gray-500">Event Date</dt>
             <dd className="mt-1 text-gray-900">
-              {formData.eventDate ? new Date(formData.eventDate).toLocaleDateString() : 'Not specified'}
+              {formData.dateType === 'single' 
+                ? (formData.startDate ? new Date(formData.startDate).toLocaleDateString() : 'Not specified')
+                : `${new Date(formData.startDate).toLocaleDateString()} - ${new Date(formData.endDate).toLocaleDateString()}`
+              }
             </dd>
           </div>
           <div>
