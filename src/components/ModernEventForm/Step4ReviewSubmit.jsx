@@ -1,7 +1,7 @@
 import React from "react";
 import { Check } from 'lucide-react';
 
-const Step4ReviewSubmit = ({ formData, onPrev, onSubmit }) => {
+const Step4ReviewSubmit = ({ formData, onPrev, onSubmit, isSubmitting, submitError }) => {
   return (
     <div className="space-y-6 text-center">
       <div className="flex justify-center">
@@ -53,18 +53,26 @@ const Step4ReviewSubmit = ({ formData, onPrev, onSubmit }) => {
         </dl>
       </div>
 
+      {submitError && (
+        <div className="text-red-500 mt-4">
+          {submitError}
+        </div>
+      )}
+
       <div className="flex justify-between mt-8">
         <button
           onClick={onPrev}
           className="px-6 py-3 border-2 border-orange-500 text-orange-500 rounded-xl hover:bg-orange-50 transition duration-300"
+          disabled={isSubmitting}
         >
           Previous step
         </button>
         <button
           onClick={onSubmit}
           className="px-6 py-3 bg-orange-500 text-white rounded-xl hover:bg-orange-600 transition duration-300"
+          disabled={isSubmitting}
         >
-          Submit
+          {isSubmitting ? 'Submitting...' : 'Submit'}
         </button>
       </div>
     </div>

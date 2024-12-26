@@ -3,11 +3,14 @@ import Step1ContactDetails from "./Step1ContactDetails";
 import Step2EventDetails from "./Step2EventDetails";
 import Step3BudgetDescription from "./Step3BudgetDescription";
 import Step4ReviewSubmit from "./Step4ReviewSubmit";
+import { submitEventData } from "../../api/eventApi";
 
 const MultistepFormModal = ({ onClose, initialStep = 1 }) => {
   const [step, setStep] = useState(initialStep);
   const [formData, setFormData] = useState({});
   const [isVisible, setIsVisible] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState(null);
 
   useEffect(() => {
     setIsVisible(true);
@@ -29,8 +32,18 @@ const MultistepFormModal = ({ onClose, initialStep = 1 }) => {
   };
 
   const handleSubmit = async () => {
-    console.log("Form submitted:", formData);
-    closeModal();
+    setIsSubmitting(true);
+    setSubmitError(null);
+    try {
+      const result = await submitEventData(formData);
+      console.log("Form submitted successfully:", result);
+      closeModal();
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setSubmitError("Failed to submit the form. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const steps = [
@@ -78,6 +91,8 @@ const MultistepFormModal = ({ onClose, initialStep = 1 }) => {
                 onNext={handleNext}
                 onPrev={handlePrev}
                 onSubmit={handleSubmit}
+                isSubmitting={isSubmitting}
+                submitError={submitError}
               />
             </div>
           </div>
