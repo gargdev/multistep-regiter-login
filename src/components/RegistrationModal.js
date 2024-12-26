@@ -48,7 +48,7 @@ export default function RegistrationModal({ onClose, initialStep = 1 }) {
 
   const handleSubmit = async (data) => {
     try {
-      const result = await registerUser(data);
+       await registerUser(data);
       alert("Registration successful!");
     } catch (err) {
       alert(err.message);

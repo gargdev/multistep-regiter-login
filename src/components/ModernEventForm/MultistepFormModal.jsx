@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import Step1ContactDetails from "./RequirementSteps/Step1ContactDetails";
-import Step2EventDetails from "./RequirementSteps/Step2EventDetails";
-import Step3BudgetDescription from "./RequirementSteps/Step3BudgetDescription";
-import Step4ReviewSubmit from "./RequirementSteps/Step4ReviewSubmit";
+import { User, Mail, Phone, Building2 } from 'lucide-react';
+import Step1ContactDetails from "./Step1ContactDetails";
+import Step2EventDetails from "./Step2EventDetails";
+import Step3BudgetDescription from "./Step3BudgetDescription";
+import Step4ReviewSubmit from "./Step4ReviewSubmit";
 
 const MultistepFormModal = ({ onClose, initialStep = 1 }) => {
   const [step, setStep] = useState(initialStep);
@@ -44,7 +45,7 @@ const MultistepFormModal = ({ onClose, initialStep = 1 }) => {
 
   return (
     <div className={`fixed inset-0 z-50 overflow-y-auto transition-opacity duration-300 ${isVisible ? "opacity-100" : "opacity-0"}`}>
-      <div className="fixed inset-0 bg-black/50 bg-opacity-50 backdrop-blur-sm" onClick={closeModal}></div>
+      <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm" onClick={closeModal}></div>
       <div className="flex items-center justify-center min-h-screen p-4">
         <div className="bg-white rounded-[20px] shadow-xl w-full max-w-xl transform transition-all duration-300 ease-in-out z-10 relative">
           <div className="p-8">
@@ -88,3 +89,4 @@ const MultistepFormModal = ({ onClose, initialStep = 1 }) => {
 };
 
 export default MultistepFormModal;
+

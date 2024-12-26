@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import RegistrationModal from "./RegistrationModal";
 import { FaBars, FaTimes } from "react-icons/fa";
-import MultistepFormModal from "./MultistepFormModal";
+import MultistepFormModal from "./ModernEventForm/MultistepFormModal";
 
 function Navbar() {
   const navigate = useNavigate();
