@@ -148,11 +148,43 @@ const GuestSlider = ({ value, onChange }) => {
   );
 };
 
+const EventTypeSelector = ({ selectedType, onChange }) => {
+  const eventTypes = [
+    "Wedding",
+    "Corporate Event",
+    "Birthday Party",
+    "Conference",
+    "Other"
+  ];
+
+  return (
+    <div className="space-y-2">
+      <label className="text-orange-500">Event Type</label>
+      <div className="grid grid-cols-2 gap-2">
+        {eventTypes.map((type) => (
+          <button
+            key={type}
+            onClick={() => onChange(type)}
+            className={`px-4 py-2 rounded-xl transition-colors ${
+              selectedType === type
+                ? 'bg-orange-500 text-white'
+                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+            }`}
+          >
+            {type}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+};
+
 const Step2EventDetails = ({ formData, onNext, onPrev }) => {
   const [dateType, setDateType] = useState(formData?.dateType || 'single');
   const [startDate, setStartDate] = useState(formData?.startDate ? new Date(formData.startDate) : null);
   const [endDate, setEndDate] = useState(formData?.endDate ? new Date(formData.endDate) : null);
   const [guestCount, setGuestCount] = useState(formData?.guestCount || 45);
+  const [eventType, setEventType] = useState(formData?.eventType || '');
 
   const handleDateSelect = (date) => {
     if (dateType === 'single') {
@@ -189,8 +221,15 @@ const Step2EventDetails = ({ formData, onNext, onPrev }) => {
   return (
     <div className="space-y-6">
       <div>
-        <h3 className="text-2xl font-semibold text-[#1D1B20]">What is Event date?</h3>
-        <p className="text-orange-500 mt-1">Please select the event date this event is happening.</p>
+        <h3 className="text-2xl font-semibold text-[#1D1B20]">Event Details</h3>
+        <p className="text-orange-500 mt-1">Please provide information about your event.</p>
+      </div>
+
+      <EventTypeSelector selectedType={eventType} onChange={setEventType} />
+      
+      <div>
+        <h4 className="text-lg font-semibold text-[#1D1B20]">Event Date</h4>
+        <p className="text-gray-500 mt-1">Select the date(s) for your event.</p>
       </div>
       
       <DateTypeSelector dateType={dateType} onChange={handleDateTypeChange} />
@@ -222,10 +261,11 @@ const Step2EventDetails = ({ formData, onNext, onPrev }) => {
             dateType,
             startDate,
             endDate,
-            guestCount
+            guestCount,
+            eventType
           })}
           className="px-6 py-3 bg-orange-500 text-white rounded-xl hover:bg-orange-600 transition duration-300"
-          disabled={!startDate || (dateType === 'range' && !endDate)}
+          disabled={!startDate || (dateType === 'range' && !endDate) || !eventType}
         >
           Next step
         </button>

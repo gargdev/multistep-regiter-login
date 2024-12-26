@@ -8,19 +8,20 @@ function Navbar() {
   const navigate = useNavigate();
 
   const [isRegistrationModalOpen, setIsRegistrationModalOpen] = useState(false);
-  const [isMultistepFormModalOpen, setIsMultistepFormModalOpen] = useState(false);
+  const [isMultistepFormModalOpen, setIsMultistepFormModalOpen] =
+    useState(false);
   const [modalStep, setModalStep] = useState(1); // Default to the first step
   const [isDrawerOpen, setIsDrawerOpen] = useState(false); // Drawer state
 
-// Open and close modal functions
-const openRegistrationModal = (step) => {
-  setModalStep(step); // Set the step for the registration modal
-  setIsRegistrationModalOpen(true);
-};
-const closeRegistrationModal = () => setIsRegistrationModalOpen(false);
+  // Open and close modal functions
+  const openRegistrationModal = (step) => {
+    setModalStep(step); // Set the step for the registration modal
+    setIsRegistrationModalOpen(true);
+  };
+  const closeRegistrationModal = () => setIsRegistrationModalOpen(false);
 
-const openMultistepFormModal = () => setIsMultistepFormModalOpen(true);
-const closeMultistepFormModal = () => setIsMultistepFormModalOpen(false);
+  const openMultistepFormModal = () => setIsMultistepFormModalOpen(true);
+  const closeMultistepFormModal = () => setIsMultistepFormModalOpen(false);
   const toggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen);
   };
@@ -50,9 +51,10 @@ const closeMultistepFormModal = () => setIsMultistepFormModalOpen(false);
         <Link to="/" className="hover:text-orange-500">
           Home
         </Link>
-        <button 
+        <button
           onClick={openMultistepFormModal}
-          className="hover:text-orange-500">
+          className="hover:text-orange-500"
+        >
           Plan your event
         </button>
         <Link to="/help" className="hover:text-orange-500">
@@ -201,7 +203,10 @@ const closeMultistepFormModal = () => setIsMultistepFormModalOpen(false);
 
       {/* Modals */}
       {isRegistrationModalOpen && (
-        <RegistrationModal onClose={closeRegistrationModal} initialStep={modalStep} />
+        <RegistrationModal
+          onClose={closeRegistrationModal}
+          initialStep={modalStep}
+        />
       )}
       {isMultistepFormModalOpen && (
         <MultistepFormModal
